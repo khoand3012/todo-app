@@ -1,9 +1,13 @@
+import useTodosStore from '../../store';
 import './index.scss';
 
 export default function Input() {
+	const addTodo = useTodosStore((state) => state.addTodo);
+
 	const handleInput = (event: React.KeyboardEvent) => {
-		if (event.key === 'Enter') {
-			console.log((event.target as HTMLInputElement).value);
+		const newTodoValue = (event.target as HTMLInputElement).value;
+		if (event.key === 'Enter' && newTodoValue) {
+			addTodo(newTodoValue);
 			(event.target as HTMLInputElement).value = '';
 		}
 	};
