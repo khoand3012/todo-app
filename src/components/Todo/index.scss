@@ -1,0 +1,46 @@
+.todos {
+	&-todo {
+		display: flex;
+		font-size: 18px;
+		flex: 1;
+		max-height: 24px;
+		align-items: center;
+		padding: 8px 4px;
+		border: 1px solid gray;
+		gap: 8px;
+	}
+
+	&-delete,
+	&-edit {
+		width: 36px;
+		height: 36px;
+	}
+
+	&-options {
+		margin-left: auto;
+		display: flex;
+		gap: 4px;
+	}
+
+	&-change-input {
+		font-size: 18px;
+		height: fit-content;
+	}
+
+	&-change-btn {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		outline: none;
+		border: 0.5px solid gray;
+		&--completed {
+			background: green;
+		}
+	}
+
+	&-label {
+		&--completed {
+			text-decoration: line-through;
+		}
+	}
+}

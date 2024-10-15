@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { ITodo } from '../models';
+import { decompress } from 'lz-string';
 
 interface ITodosState {
 	todos: ITodo[];
@@ -7,14 +8,14 @@ interface ITodosState {
 	removeTodo: (id: string) => void;
 	renameTodo: (id: string, newLabel: string) => void;
 	removeCompletedTodos: () => void;
-    toggleCompleteTodo: (id: string) => void;
+	toggleCompleteTodo: (id: string) => void;
 }
 
 const initialTodosString = localStorage.getItem('todos');
 let initialTodos: ITodo[] = [];
 if (initialTodosString) {
 	try {
-		initialTodos = JSON.parse(initialTodosString);
+		initialTodos = JSON.parse(decompress(initialTodosString));
 	} catch (e) {
 		console.error(e);
 		initialTodos = [];
